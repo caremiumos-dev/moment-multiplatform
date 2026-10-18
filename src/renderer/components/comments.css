@@ -1,0 +1,119 @@
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: var(--sp-3);
+  padding: 5px 0;
+}
+
+/* 评论正文：不缩进、不套气泡，靠名字的墨色区分发言人。 */
+.comment__text {
+  font-family: var(--font-ui);
+  font-size: var(--fs-ui);
+  line-height: 1.72;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.comment__name {
+  font-weight: 600;
+  color: var(--ink);
+  transition: color var(--ease);
+}
+
+button.comment__name:hover {
+  color: var(--accent);
+}
+
+/* 被回复者用次级墨色，别和发言人抢注意力。 */
+.comment__name--quiet {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+
+.comment__verb {
+  margin: 0 3px;
+  color: var(--ink-3);
+}
+
+.comment__colon {
+  color: var(--ink-3);
+  margin-right: 1px;
+}
+
+.comment__body {
+  white-space: pre-wrap;
+}
+
+.comment__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  white-space: nowrap;
+}
+
+.comment__act {
+  font-size: var(--fs-micro);
+  color: var(--ink-4);
+  transition: color var(--ease);
+}
+
+.comment__act:hover {
+  color: var(--ink-2);
+}
+
+.comment__act[data-tone='danger']:hover {
+  color: var(--accent);
+}
+
+/* ── 评论输入 ────────────────────────────────────────────────────────────── */
+
+.cform {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+
+.cform__reply {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+}
+
+.cform__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
+  transition: border-color var(--ease);
+}
+
+.cform__row:focus-within {
+  border-color: var(--ink-2);
+}
+
+.cform__input {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-ui);
+  font-size: var(--fs-ui);
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.cform__input::placeholder {
+  color: var(--ink-4);
+}

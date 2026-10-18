@@ -1,0 +1,53 @@
+.video {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 9 / 12;
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video[data-idle='true'] {
+  cursor: pointer;
+}
+
+/* 没有封面时别留一块死白，用纸色底加一条斜线暗示「视频」。 */
+.video__blank {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--paper-sunk);
+}
+
+.video__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  transition: color var(--ease);
+}
+
+/* 播放标记：一个描边方块，不是发光圆钮。 */
+.video__play svg {
+  padding: 14px;
+  width: 56px;
+  height: 56px;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius);
+  background: rgba(28, 27, 25, 0.32);
+}
+
+.video[data-idle='true']:hover .video__play {
+  color: #fff;
+}

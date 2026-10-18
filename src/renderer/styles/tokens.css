@@ -1,0 +1,98 @@
+/*
+ * 设计系统：暖纸质编辑部风。
+ *
+ * 这份文件是唯一的颜色与尺寸来源，组件里不许出现字面量色值。
+ * 下面每一条「禁令」都是刻意的，改之前先想清楚为什么：
+ *
+ *   ✗ 蓝紫主色（#6366f1 / #8b5cf6 / #3b82f6 一类）
+ *   ✗ 任何装饰性 linear-gradient / radial-gradient
+ *   ✗ glow、光晕、外发光、霓虹描边
+ *   ✗ backdrop-filter 毛玻璃
+ *   ✗ 卡片 hover 时的 transform: scale() / translateY()
+ *   ✗ 用 box-shadow 表达层级（层级靠 1px 描边与留白）
+ *   ✗ emoji 当图标
+ *
+ * 允许的交互反馈只有一种：颜色在 120ms 内变化。
+ */
+
+:root {
+  /* ── 纸与墨 ───────────────────────────────────────────────────────────── */
+  --paper: #faf8f4;
+  --paper-sunk: #f2eee6;
+  --paper-raised: #fffefb;
+  --ink: #1c1b19;
+  --ink-2: #5a5650;
+  --ink-3: #8c867c;
+  --ink-4: #b3ac9f;
+
+  /* ── 线 ──────────────────────────────────────────────────────────────── */
+  --rule: #ded7ca;
+  --rule-strong: #c9c0af;
+
+  /* ── 点缀：砖红。全站唯一彩色 ──────────────────────────────────────────── */
+  --accent: #b4472e;
+  --accent-deep: #8f3722;
+  --accent-wash: rgba(180, 71, 46, 0.07);
+
+  /* ── 字体 ────────────────────────────────────────────────────────────── */
+  /* 界面文字：无衬线，只用于导航、按钮、标签。 */
+  --font-ui: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  /* 阅读文字：中文衬线，动态正文与标题用它，这是本设计的主音。 */
+  --font-read: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'SimSun', serif;
+  /* 数字与时间：等宽，让时间戳、计数纵向对齐。 */
+  --font-num: 'Cascadia Mono', 'Cascadia Code', Consolas, ui-monospace, monospace;
+
+  /* ── 字号 ────────────────────────────────────────────────────────────── */
+  --fs-micro: 11px;
+  --fs-meta: 12px;
+  --fs-ui: 13px;
+  --fs-body: 15px;
+  --fs-lead: 17px;
+  --fs-title: 20px;
+  --fs-display: 26px;
+
+  /* 正文行高给到 1.85：中文衬线在小字号下需要更多呼吸。 */
+  --lh-read: 1.85;
+  --lh-ui: 1.5;
+
+  /* ── 间距：8 的倍数，不出现 5px / 7px 这种随手值 ───────────────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* ── 形状 ────────────────────────────────────────────────────────────── */
+  /* 近乎直角。圆角只用来削掉像素毛刺，不用来卖萌。 */
+  --radius: 2px;
+
+  /* ── 布局 ────────────────────────────────────────────────────────────── */
+  --rail-left: 208px;
+  --rail-right: 280px;
+  --col-read: 620px;
+  --gutter: 32px;
+
+  /* 唯一允许的投影：给浮层（灯箱、确认条）用，极浅，且不带颜色。 */
+  --shadow-float: 0 2px 16px rgba(28, 27, 25, 0.1);
+
+  --ease: 120ms ease;
+}
+
+/* 尊重系统的减少动效设置：所有过渡与动画归零。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ease: 0ms linear;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

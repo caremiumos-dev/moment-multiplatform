@@ -1,0 +1,270 @@
+/*
+ * 外壳布局。
+ *
+ * 三栏不对称：左 208（导航）、中 620 上限（阅读宽度，中文一行 30 字上下最舒服）、
+ * 右 280（信息）。整体靠左偏置，右侧留白多一些 —— 版面因此有「一本书翻在
+ * 左边」的重心，而不是居中一张大卡片。
+ */
+
+.boot {
+  height: 100%;
+  background: var(--paper);
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: var(--rail-left) minmax(0, var(--col-read)) var(--rail-right);
+  column-gap: var(--gutter);
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 三栏加起来超过窗口时整体收缩，中栏优先保住阅读宽度。 */
+@media (max-width: 1320px) {
+  .shell {
+    column-gap: var(--sp-5);
+    padding: 0 var(--sp-5);
+  }
+}
+
+/* 中间栏自己滚动，左右两栏固定 —— 长列表滚动时导航不掉走。 */
+.col {
+  min-width: 0;
+  height: 100%;
+  overflow-y: auto;
+  padding: var(--sp-7) 0 var(--sp-8);
+  scrollbar-gutter: stable;
+}
+
+/* ── 左栏 ────────────────────────────────────────────────────────────────── */
+
+.rail--left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--sp-7) 0 var(--sp-5);
+  border-right: 1px solid var(--rule);
+  padding-right: var(--sp-5);
+}
+
+.rail__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.rail__brand-name {
+  font-family: var(--font-read);
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.rail__brand-meta {
+  font-size: var(--fs-micro);
+  color: var(--ink-4);
+  /* 域名可能很长，宁可省略号也别撑破 208px 的栏宽。 */
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail__nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--sp-7);
+}
+
+/* 导航项：一条左侧竖线标记当前页，字号比正文小。 */
+.rail__link {
+  position: relative;
+  padding: 7px 0 7px var(--sp-4);
+  text-align: left;
+  font-size: var(--fs-ui);
+  color: var(--ink-2);
+  transition: color var(--ease);
+}
+
+.rail__link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 0;
+  background: var(--accent);
+  transform: translateY(-50%);
+  transition: height var(--ease);
+}
+
+.rail__link:hover {
+  color: var(--ink);
+}
+
+.rail__link[data-on='true'] {
+  color: var(--ink);
+}
+
+.rail__link[data-on='true']::before {
+  height: 13px;
+}
+
+.rail__account {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--rule);
+}
+
+.rail__account-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+
+.rail__account-name {
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rail__signout {
+  align-self: flex-start;
+  font-size: var(--fs-micro);
+  color: var(--ink-4);
+  transition: color var(--ease);
+}
+
+.rail__signout:hover {
+  color: var(--accent);
+}
+
+/* ── 右栏 ────────────────────────────────────────────────────────────────── */
+
+.rail--right {
+  height: 100%;
+  overflow-y: auto;
+  padding: var(--sp-7) 0 var(--sp-8);
+  border-left: 1px solid var(--rule);
+  padding-left: var(--sp-5);
+}
+
+.rr__block {
+  margin-bottom: var(--sp-6);
+}
+
+.rr__title {
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  color: var(--ink-4);
+  padding-bottom: var(--sp-2);
+  margin-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.rr__dl {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  row-gap: var(--sp-2);
+  margin: 0;
+  font-size: var(--fs-meta);
+}
+
+.rr__dl dt {
+  color: var(--ink-3);
+  font-size: var(--fs-micro);
+  line-height: 1.8;
+}
+
+.rr__dl dd {
+  margin: 0;
+  min-width: 0;
+  color: var(--ink-2);
+  line-height: 1.8;
+}
+
+/* watchId 是 32 位十六进制，等宽更容易核对；只露头尾，完整值放 title。 */
+.rr__id {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-micro);
+  line-height: 1.65;
+}
+
+/* 域名用界面字体而不是等宽：等宽 29 个字符正好顶出 280px，会断成两行。 */
+.rr__host {
+  overflow-wrap: anywhere;
+  font-size: var(--fs-micro);
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.rr__note {
+  font-size: var(--fs-meta);
+  line-height: 1.85;
+  color: var(--ink-3);
+}
+
+.rr__keys {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  row-gap: var(--sp-2);
+  margin: 0;
+  font-size: var(--fs-meta);
+}
+
+.rr__keys dt {
+  font-family: var(--font-num);
+  font-size: var(--fs-micro);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  text-align: center;
+  line-height: 1.9;
+  align-self: start;
+}
+
+.rr__keys dd {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: var(--fs-micro);
+  line-height: 1.9;
+}
+
+/* ── 窄窗口：先丢右栏，再丢左栏（改成顶部条） ─────────────────────────────── */
+
+@media (max-width: 1180px) {
+  .shell {
+    grid-template-columns: var(--rail-left) minmax(0, var(--col-read)) 0;
+    column-gap: var(--sp-5);
+  }
+
+  .rail--right {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rail--left {
+    display: none;
+  }
+
+  .col {
+    padding: var(--sp-5) var(--sp-4);
+  }
+}

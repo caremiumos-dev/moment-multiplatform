@@ -1,0 +1,32 @@
+.avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  font-family: var(--font-read);
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}
+
+/* 有图时不要描边，图片自己就是边界。 */
+.avatar[data-image='true'] {
+  border-color: transparent;
+  background: transparent;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar__initial {
+  /* 首字略微上提，光学上更居中 */
+  transform: translateY(-0.04em);
+}

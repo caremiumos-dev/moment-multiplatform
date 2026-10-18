@@ -1,0 +1,147 @@
+/* ── 页头 ────────────────────────────────────────────────────────────────── */
+
+.feed__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--sp-4);
+  margin-bottom: var(--sp-4);
+  border-bottom: 2px solid var(--ink);
+}
+
+.feed__title {
+  font-family: var(--font-read);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.feed__tabs {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+}
+
+/* 选中态用下划线，不用胶囊底色。 */
+.feed__tab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding-bottom: 2px;
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--ease),
+    border-color var(--ease);
+}
+
+.feed__tab:hover {
+  color: var(--ink-2);
+}
+
+.feed__tab[data-on='true'] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ── 错误条 ──────────────────────────────────────────────────────────────── */
+
+.feed__error {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 2px solid var(--accent);
+  background: var(--accent-wash);
+}
+
+.feed__error p {
+  flex: 1;
+  font-size: var(--fs-meta);
+  line-height: 1.7;
+  color: var(--accent-deep);
+}
+
+/* ── 骨架屏：不用扫光动画，用静态的浅色块，安静地等 ─────────────────────── */
+
+.feed__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+  padding-top: var(--sp-5);
+}
+
+.skeleton {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  column-gap: var(--sp-4);
+  row-gap: 10px;
+}
+
+.skeleton__avatar {
+  grid-row: span 2;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.skeleton__line {
+  height: 11px;
+  border-radius: 1px;
+  background: var(--paper-sunk);
+}
+
+.feed__loading-text {
+  font-size: var(--fs-meta);
+  color: var(--ink-4);
+}
+
+/* ── 空状态 ──────────────────────────────────────────────────────────────── */
+
+.feed__empty {
+  padding: var(--sp-8) 0;
+  text-align: center;
+}
+
+.feed__empty-title {
+  font-family: var(--font-read);
+  font-size: var(--fs-lead);
+  color: var(--ink-2);
+}
+
+.feed__empty-sub {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+}
+
+/* ── 列表与底部 ──────────────────────────────────────────────────────────── */
+
+.feed__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.feed__more {
+  display: flex;
+  justify-content: center;
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.feed__more .textbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ink-2);
+}
+
+.feed__end {
+  padding: var(--sp-5) 0;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-4);
+}

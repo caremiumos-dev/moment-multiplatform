@@ -1,0 +1,41 @@
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topics__tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  padding: 1px 0;
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+  /* 下划线就是话题的唯一视觉标记，不用药丸底色。 */
+  border-bottom: 1px solid var(--accent);
+  transition: color var(--ease);
+}
+
+.topics__tag:hover {
+  color: var(--accent-deep);
+}
+
+/* 官方话题多一道实心声明的竖线，用户自建话题只有下划线。 */
+.topics__tag[data-official='true']::before {
+  content: '';
+  width: 2px;
+  height: 9px;
+  margin-right: 5px;
+  background: var(--accent);
+  align-self: center;
+}
+
+.topics__hash {
+  color: var(--accent);
+  font-family: var(--font-num);
+  font-size: var(--fs-micro);
+}

@@ -1,0 +1,157 @@
+.moment {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--sp-4);
+  padding: var(--sp-5) 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* 首条不要上边线，避免列表顶部出现一条悬空的线。 */
+.moment:first-child {
+  border-top: none;
+}
+
+.moment__gutter {
+  padding-top: 2px;
+}
+
+.moment__main {
+  min-width: 0;
+}
+
+/* ── 头部：作者 · 时间 · 位置 ─────────────────────────────────────────────── */
+
+.moment__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  min-height: 20px;
+}
+
+.moment__author {
+  font-family: var(--font-read);
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+/* 「我」的标记做成方括号样式，比彩色徽章安静。 */
+.moment__badge {
+  align-self: center;
+  padding: 0 5px;
+  font-size: var(--fs-micro);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
+
+.moment__time {
+  cursor: default;
+}
+
+.moment__place {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+}
+
+.moment__spacer {
+  flex: 1;
+}
+
+.moment__more {
+  font-size: var(--fs-meta);
+  color: var(--ink-4);
+  transition: color var(--ease);
+}
+
+.moment__more:hover {
+  color: var(--accent);
+}
+
+.moment__confirm {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+/* ── 正文 ────────────────────────────────────────────────────────────────── */
+
+.moment__text {
+  margin-top: 7px;
+}
+
+/* ── 媒体 ────────────────────────────────────────────────────────────────── */
+
+.moment__media {
+  margin-top: var(--sp-4);
+}
+
+.moment__topics {
+  margin-top: var(--sp-3);
+}
+
+/* ── 操作条 ──────────────────────────────────────────────────────────────── */
+
+.moment__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  margin-top: var(--sp-4);
+}
+
+.moment__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  transition: color var(--ease);
+}
+
+.moment__action:hover:not(:disabled) {
+  color: var(--ink);
+}
+
+.moment__action:disabled {
+  cursor: default;
+}
+
+/* 已赞：唯一用点缀色的地方，且不加背景、不加动画。 */
+.moment__action[data-on='true'] {
+  color: var(--accent);
+}
+
+.moment__action[data-on='true']:hover {
+  color: var(--accent-deep);
+}
+
+.moment__count {
+  color: inherit;
+  font-size: var(--fs-micro);
+  opacity: 0.72;
+}
+
+/* ── 评论区 ──────────────────────────────────────────────────────────────── */
+
+.moment__comments {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--paper-sunk);
+}
+
+.moment__allcomments {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  transition: color var(--ease);
+}
+
+.moment__allcomments:hover {
+  color: var(--accent-deep);
+}

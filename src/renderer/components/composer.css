@@ -1,0 +1,341 @@
+/* ── 收起状态：一条 1px 描边的入口条 ─────────────────────────────────────────── */
+
+.composer__entry {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: 11px var(--sp-4);
+  margin-bottom: var(--sp-5);
+  font-size: var(--fs-ui);
+  color: var(--ink-3);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  transition:
+    border-color var(--ease),
+    color var(--ease);
+}
+
+.composer__entry:hover {
+  border-color: var(--rule-strong);
+  color: var(--ink-2);
+}
+
+/* ── 展开状态 ────────────────────────────────────────────────────────────── */
+
+.composer {
+  margin-bottom: var(--sp-5);
+  padding: var(--sp-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+}
+
+.composer__text {
+  width: 100%;
+  font-family: var(--font-read);
+  font-size: var(--fs-body);
+  line-height: var(--lh-read);
+  color: var(--ink);
+  min-height: 96px;
+}
+
+.composer__text::placeholder {
+  color: var(--ink-4);
+}
+
+/* ── 缩略图 ──────────────────────────────────────────────────────────────── */
+
+.composer__thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+
+.composer__thumb {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.composer__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.composer__thumbblank {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--paper-sunk);
+}
+
+.composer__thumbx {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  padding: 3px;
+  color: var(--paper);
+  background: rgba(28, 27, 25, 0.6);
+  transition: background-color var(--ease);
+}
+
+.composer__thumbx:hover {
+  background: var(--accent);
+}
+
+.composer__thumb--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--sp-2);
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  border: 1px dashed var(--rule-strong);
+  background: transparent;
+  transition: color var(--ease);
+}
+
+.composer__thumb--add:hover {
+  color: var(--ink-2);
+}
+
+/* ── 已选视频：左侧封面缩略图 + 右侧文件名与封面状态 ─────────────────────── */
+
+.composer__video {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+  padding: var(--sp-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+}
+
+/* 封面预览按 320x360 的比例缩，跟服务端报的尺寸一致，所见即所得。 */
+.composer__coverbox {
+  flex: none;
+  width: 54px;
+  height: 61px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.composer__coverbox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.composer__coverspacer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--paper-sunk);
+}
+
+.composer__videotext {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.composer__videoname {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.composer__covermeta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.composer__coveract {
+  font-size: var(--fs-micro);
+  color: var(--ink-4);
+  transition: color var(--ease);
+}
+
+.composer__coveract:hover:not(:disabled) {
+  color: var(--accent);
+}
+
+.composer__coveract:disabled {
+  color: var(--ink-4);
+  cursor: default;
+}
+
+.composer__files {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-meta);
+}
+
+/* ── 话题选择器 ──────────────────────────────────────────────────────────── */
+
+.picker {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--paper-sunk);
+}
+
+.picker__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-2);
+}
+
+.picker__error {
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  margin-bottom: var(--sp-2);
+}
+
+.picker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--sp-2);
+}
+
+.picker__chip {
+  padding: 2px 9px;
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  transition:
+    color var(--ease),
+    border-color var(--ease),
+    background-color var(--ease);
+}
+
+.picker__chip:hover:not(:disabled) {
+  border-color: var(--ink-2);
+  color: var(--ink);
+}
+
+.picker__chip[data-on='true'] {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.picker__chip:disabled {
+  color: var(--ink-4);
+  border-color: var(--paper-sunk);
+  cursor: default;
+}
+
+.picker__input {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color var(--ease);
+}
+
+.picker__input:focus-within {
+  border-color: var(--ink-2);
+}
+
+.picker__input input {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-meta);
+  color: var(--ink);
+}
+
+.picker__input input::placeholder {
+  color: var(--ink-4);
+}
+
+/* ── 位置 ────────────────────────────────────────────────────────────────── */
+
+.composer__loc {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  padding-bottom: 4px;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.composer__loc input {
+  flex: 1;
+  font-size: var(--fs-meta);
+  color: var(--ink);
+}
+
+.composer__loc input::placeholder {
+  color: var(--ink-4);
+}
+
+/* ── 错误与底部 ──────────────────────────────────────────────────────────── */
+
+.composer__error {
+  margin-top: var(--sp-3);
+  padding-left: var(--sp-2);
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+  line-height: 1.6;
+}
+
+.composer__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+
+.composer__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.composer__tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+  transition: color var(--ease);
+}
+
+.composer__tool:hover:not(:disabled) {
+  color: var(--ink);
+}
+
+.composer__tool:disabled {
+  color: var(--ink-4);
+  cursor: default;
+}
+
+.composer__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}

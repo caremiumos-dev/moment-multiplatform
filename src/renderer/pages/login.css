@@ -1,0 +1,236 @@
+.login {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: var(--sp-8);
+  align-items: center;
+  height: 100%;
+  padding: var(--sp-8) clamp(var(--sp-6), 6vw, 96px);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.login__panel {
+  border-top: 2px solid var(--ink);
+  padding-top: var(--sp-5);
+}
+
+.login__head {
+  margin-bottom: var(--sp-6);
+}
+
+.login__title {
+  font-family: var(--font-read);
+  font-size: var(--fs-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.login__sub {
+  margin-top: 6px;
+  font-size: var(--fs-meta);
+  color: var(--ink-3);
+}
+
+/* ── 登录方式页签：下划线式，不用胶囊按钮 ─────────────────────────────────── */
+
+.login__tabs {
+  display: flex;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--rule);
+}
+
+.login__tab {
+  position: relative;
+  padding: 0 0 8px;
+  font-size: var(--fs-ui);
+  color: var(--ink-3);
+  transition: color var(--ease);
+}
+
+.login__tab:hover {
+  color: var(--ink-2);
+}
+
+.login__tab[data-on='true'] {
+  color: var(--ink);
+}
+
+.login__tab[data-on='true']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* 可选字段的后缀标记，别让它喧宾夺主。 */
+.field__optional {
+  margin-left: 2px;
+  color: var(--ink-4);
+}
+
+/* 被要求补 chipId 时给输入框一点强调，但不做红框闪烁。 */
+.field[data-emphasis='true'] input {
+  border-bottom-color: var(--accent);
+}
+
+/* 收起状态的 chipId 入口：一行小字，不抢主按钮的注意力。 */
+.login__revealchip {
+  align-self: flex-start;
+  font-size: var(--fs-micro);
+  color: var(--ink-3);
+  border-bottom: 1px dashed var(--rule-strong);
+  transition: color var(--ease);
+}
+
+.login__revealchip:hover {
+  color: var(--accent);
+}
+
+.login__hint {
+  padding-left: var(--sp-3);
+  font-size: var(--fs-micro);
+  line-height: 1.7;
+  color: var(--ink-2);
+  border-left: 2px solid var(--rule-strong);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* ── 表单项：只有下划线，没有输入框底色 ──────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field input {
+  padding: 7px 0;
+  font-family: var(--font-num);
+  font-size: var(--fs-ui);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  transition: border-color var(--ease);
+}
+
+.field input::placeholder {
+  font-family: var(--font-ui);
+  color: var(--ink-4);
+}
+
+.field input:focus {
+  border-color: var(--ink);
+}
+
+.login__remember {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  font-size: var(--fs-micro);
+  line-height: 1.7;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.login__remember[data-disabled='true'] {
+  color: var(--ink-3);
+  cursor: default;
+}
+
+.login__remember input {
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+  cursor: inherit;
+}
+
+.login__error {
+  padding-left: var(--sp-3);
+  font-size: var(--fs-meta);
+  line-height: 1.7;
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.login__submit {
+  justify-content: center;
+  margin-top: var(--sp-2);
+  padding: 9px 16px;
+}
+
+.login__foot {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-size: var(--fs-micro);
+  line-height: 1.75;
+  color: var(--ink-3);
+}
+
+/* ── 右侧说明 ────────────────────────────────────────────────────────────── */
+
+.login__aside {
+  padding-left: var(--sp-6);
+  border-left: 1px solid var(--rule);
+}
+
+.login__quote {
+  font-family: var(--font-read);
+  font-size: var(--fs-title);
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+.login__list {
+  margin: var(--sp-6) 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  font-size: var(--fs-meta);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.login__list li {
+  position: relative;
+  padding-left: var(--sp-4);
+}
+
+/* 条目用一条短横线引导，不用圆点。 */
+.login__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* 窄窗口时右侧说明先让位。 */
+@media (max-width: 980px) {
+  .login {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+  }
+
+  .login__aside {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding-top: var(--sp-5);
+  }
+}

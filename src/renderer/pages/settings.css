@@ -1,0 +1,100 @@
+.settings {
+  padding-bottom: var(--sp-8);
+}
+
+.settings__title {
+  font-family: var(--font-read);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding-bottom: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  border-bottom: 2px solid var(--ink);
+}
+
+.settings__block {
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.settings__who {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.settings__who-text {
+  min-width: 0;
+}
+
+.settings__name {
+  font-family: var(--font-read);
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+/* watchId 有 32 位，放在副行里截断，别当标题用。 */
+.settings__watchid {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settings__h2 {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-3);
+}
+
+/* 设置里的键值表：左侧标签定宽，右侧值可折行。 */
+.settings__dl {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  row-gap: var(--sp-2);
+  margin: 0;
+  font-size: var(--fs-ui);
+}
+
+.settings__dl dt {
+  color: var(--ink-3);
+  font-size: var(--fs-meta);
+  line-height: 1.7;
+}
+
+.settings__dl dd {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.settings__note {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-meta);
+  line-height: 1.8;
+  color: var(--ink-3);
+}
+
+.settings__error {
+  margin: var(--sp-3) 0;
+  padding-left: var(--sp-3);
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.settings__confirm p {
+  font-size: var(--fs-meta);
+  line-height: 1.8;
+  color: var(--ink-2);
+  margin-bottom: var(--sp-3);
+}
+
+.settings__confirm-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
