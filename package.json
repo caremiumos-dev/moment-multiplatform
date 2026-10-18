@@ -10,6 +10,8 @@
     "dev": "electron-vite dev",
     "build": "electron-vite build",
     "start": "electron-vite preview",
+    "package": "npm run build && electron-forge package",
+    "make": "npm run build && electron-forge make",
     "tui": "echo TUI 尚未完成，暂缓（代码保留在 tui/ 目录）",
     "tui:dev": "echo TUI 尚未完成，暂缓",
     "tui:build": "node scripts/build-tui.mjs",
@@ -17,16 +19,12 @@
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json && tsc --noEmit -p tsconfig.tui.json"
   },
   "dependencies": {
-    "@caremiumos-dev/node-moment-sdk": "^0.2.0",
-    "figures": "^6.1.0",
-    "ink": "^6.8.0",
-    "node-av": "^6.1.1",
-    "react": "^19.0.0",
-    "react-devtools-core": "^8.0.0",
-    "sixel": "^0.16.0",
-    "speaker": "^0.5.5"
+    "@caremiumos-dev/node-moment-sdk": "^0.2.0"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "@electron-forge/maker-zip": "^8.0.1",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
@@ -34,7 +32,14 @@
     "electron": "^44.9.0",
     "electron-vite": "^6.0.0",
     "esbuild": "^0.28.2",
+    "figures": "^6.1.0",
+    "ink": "^6.8.0",
+    "node-av": "^6.1.1",
+    "react": "^19.0.0",
+    "react-devtools-core": "^8.0.0",
     "react-dom": "^19.0.0",
+    "sixel": "^0.16.0",
+    "speaker": "^0.5.5",
     "typescript": "^5.6.0",
     "vite": "^7.1.0"
   }
