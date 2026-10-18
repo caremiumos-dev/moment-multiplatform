@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "好友圈客户端：Electron 桌面版 + 终端版，基于 @caremiumos-dev/node-moment-sdk",
+  "license": "MIT",
   "main": "./out/main/index.js",
   "type": "module",
   "scripts": {

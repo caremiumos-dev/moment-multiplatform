@@ -156,6 +156,10 @@ ink 只擦自己产出过的行数，擦不到它。这条已经在列表预览�
 `process()` 恒返回 null；`AudioFrameBuffer` 构造就抛 `nbSamples` 类型错），
 现在是手写 FLTP → s16 转换 + 线性重采样。
 
+许可上还有一点：`speaker` 的 macOS 后端 `coreaudio.c` 声明为 **GPL-2.0**
+（其余后端是 LGPL-2.1），`node-av` 下载的 FFmpeg 构建配置也尚未确认。
+所以恢复终端版之前，得先把 `tui/` 自己的许可定下来，`core/` 保持 MIT 不动。
+
 ## 设计约束
 
 暖纸质编辑部风：纸 `#FAF8F4`、墨 `#1C1B19`、砖红 `#B4472E` 是唯一的彩色。
@@ -186,3 +190,9 @@ MOMENT_WATCH_ID=<watchId> \
 MOMENT_CHIP_ID=<chipId> \
 node scripts/verify.mjs
 ```
+
+## 许可
+
+MIT，全文见 [`LICENSE`](./LICENSE)。
+
+随应用分发的第三方组件及其署名，见 [`THIRD-PARTY-NOTICES.md`](./THIRD-PARTY-NOTICES.md)。
